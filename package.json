@@ -1,0 +1,44 @@
+{
+  "name": "chat-widget-sample",
+  "version": "0.0.1",
+  "description": "Sample chat widget built with UI kit",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livechat/chat-widget-sample.git"
+  },
+  "keywords": [
+    "livechat",
+    "chat",
+    "widget"
+  ],
+  "contributors": [
+    "Konrad Kruk <k.kruk@livechatinc.com>",
+    "Mateusz Burzyński <m.burzynski@livechatinc.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/livechat/chat-widget-sample/issues"
+  },
+  "homepage": "https://github.com/livechat/chat-widget-sample#readme",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.2",
+		"redux-create-reducer": "^1.1.0",
+		"redux": "^3.6.0",
+		"redux-saga": "^0.15.6",
+		"redux-persist": "^5.4.0",
+		"@livechat/livechat-visitor-sdk": "0.28.4",
+		"@livechat/ui-kit": "0.0.2-beta3"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

@@ -1,0 +1,7 @@
+export const NEW_MESSAGE = 'NEW_MESSAGE'
+export const CHAT_STARTED = 'CHAT_STARTED'
+export const CHAT_ENDED = 'CHAT_ENDED'
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const NEW_USER = 'NEW_AGENT'
+export const OWN_DATA_RECEIVED = 'OWN_DATA_RECEIVED'
+export const CHANGE_CHAT_SERVICE = 'CHANGE_CHAT_SERVICE'
