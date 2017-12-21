@@ -1,12 +1,14 @@
 import React from 'react'
 import {
+	Avatar,
 	TitleBar,
 	TextInput,
 	MessageList,
 	Message,
 	MessageText,
 	AgentBar,
-	AgentBarTitle,
+	Title,
+	Subtitle,
 	MessageGroup,
 	MessageButtons,
 	MessageButton,
@@ -20,6 +22,7 @@ import {
 	SendButton,
 	EmojiIcon,
 	CloseIcon,
+	Column,
 } from '@livechat/ui-kit'
 
 const getAvatarForUser = (userId, users) => {
@@ -29,6 +32,8 @@ const getAvatarForUser = (userId, users) => {
 	}
 	return null
 }
+
+const parseUrl = (url) => url && 'https://' + url.replace(/^(http(s)?\:\/\/)/, '').replace(/^\/\//, '')
 
 const App = ({
 	events,
@@ -57,8 +62,16 @@ const App = ({
 				title="Welcome to LiveChat"
 			/>
 			{currentAgent && (
-				<AgentBar agentAvatar={currentAgent.avatarUrl}>
-					<AgentBarTitle subtitle="Support hero" title={currentAgent.name} />
+				<AgentBar>
+					<Row>
+						<Column>
+							<Avatar imgUrl={parseUrl(currentAgent.avatarUrl)} />
+						</Column>
+						<Column fill>
+							<Title>{currentAgent.name}</Title>
+							<Subtitle>Support hero</Subtitle>
+						</Column>
+					</Row>
 				</AgentBar>
 			)}
 			<div
@@ -73,7 +86,7 @@ const App = ({
 						<MessageGroup key={index} onlyFirstWithMeta>
 							{messageGroup.map(message => (
 								<Message
-									avatarUrl={getAvatarForUser(message.authorId, users)}
+									avatarUrl={parseUrl(getAvatarForUser(message.authorId, users))}
 									date={message.parsedDate}
 									isOwn={message.authorId === ownId || message.own === true}
 									key={message.id}
