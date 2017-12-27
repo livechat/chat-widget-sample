@@ -60,12 +60,14 @@ class App extends Component {
             <ThemeProvider theme={themes[this.state.theme]}>
                 <div style={{
                     padding: '1em',
+                    maxWidth: '700px',
                 }}>
                     <h1>
-                        React Chat UI Kit
+                        Sample chat widget
                     </h1>
-                    <h2>Sample chat widget</h2>
-                    <p>LiveChat UI Kit is set of React components to easily build nice-looking chat windows. Read <a target="_blank" href="https://docs.livechatinc.com/react-chat-ui-kit/">documentation</a> for more details.</p>
+                    
+                    <p>Sample chat widget built with <a href="https://docs.livechatinc.com/react-chat-ui-kit/">LiveChat React chat UI kit</a>. In this widget, <a href="https://www.botengine.ai/">BotEngine</a> handles the incoming chats. When the bot returns `LiveChat.transfer` action, the chat is transferred to a human agent together with the transcript of the initial conversation with the bot.</p>
+                    <p>The sample app uses <a href="https://docs.livechatinc.com/visitor-sdk/">Visitor SDK</a> to communicate with LiveChat and <a href="https://docs.botengine.ai/api/introduction">the API</a> to connect with BotEngine.</p>
                     <h3>Change components theme:</h3>
                     <button id="theme-default" name="default" style={themeDefaultButton} onClick={this.handleThemeChange.bind(this)}>
                         default
