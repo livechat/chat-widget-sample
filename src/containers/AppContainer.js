@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 	}
 }
 
-const mapDispatchToProps = (__, { minimize }) => dispatch => ({
+const mapDispatchToProps = dispatch => ({
 	onMessageSend: data => {
 		dispatch(
 			sendMessage({
@@ -47,7 +47,6 @@ const mapDispatchToProps = (__, { minimize }) => dispatch => ({
 			}),
 		)
 	},
-	minimizeChatWidget: () => minimize(),
 	sendMessage: text =>
 		dispatch(
 			sendMessage({

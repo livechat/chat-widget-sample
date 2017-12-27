@@ -1,146 +1,96 @@
-import React from 'react'
-import {
-	Avatar,
-	TitleBar,
-	TextInput,
-	MessageList,
-	Message,
-	MessageText,
-	AgentBar,
-	Title,
-	Subtitle,
-	MessageGroup,
-	MessageButtons,
-	MessageButton,
-	MessageTitle,
-	MessageMedia,
-	TextComposer,
-	Row,
-	Fill,
-	Fit,
-	IconButton,
-	SendButton,
-	EmojiIcon,
-	CloseIcon,
-	Column,
-} from '@livechat/ui-kit'
+import React, { Component } from 'react'
+import Maximized from './Maximized'
+import Minimized from './Minimized'
+import { ThemeProvider, FixedWrapper, darkTheme, elegantTheme, purpleTheme, defaultTheme } from '@livechat/ui-kit'
 
-const getAvatarForUser = (userId, users) => {
-	const foundUser = users[userId]
-	if (foundUser && foundUser.avatarUrl) {
-		return foundUser.avatarUrl
-	}
-	return null
+const themes = {
+    defaultTheme,
+    purpleTheme,
+    elegantTheme,
+    darkTheme,
 }
 
-const parseUrl = (url) => url && 'https://' + url.replace(/^(http(s)?\:\/\/)/, '').replace(/^\/\//, '')
+const commonThemeButton = {
+    fontSize: '16px',
+    padding: '1em',
+    borderRadius: '1em',
+    margin: '1em',
+    cursor: 'pointer',
+}
 
-const App = ({
-	events,
-	onMessageSend,
-	users,
-	ownId,
-	currentAgent,
-	minimizeChatWidget,
-	maximizeChatWidget,
-	sendMessage,
-}) => {
-	return (
-		<div
-			style={{
-				display: 'flex',
-				flexDirection: 'column',
-				height: '100%',
-			}}
-		>
-			<TitleBar
-				rightIcons={[
-					<IconButton key="close" onClick={minimizeChatWidget}>
-						<CloseIcon />
-					</IconButton>,
-				]}
-				title="Welcome to LiveChat"
-			/>
-			{currentAgent && (
-				<AgentBar>
-					<Row>
-						<Column>
-							<Avatar imgUrl={parseUrl(currentAgent.avatarUrl)} />
-						</Column>
-						<Column fill>
-							<Title>{currentAgent.name}</Title>
-							<Subtitle>Support hero</Subtitle>
-						</Column>
-					</Row>
-				</AgentBar>
-			)}
-			<div
-				style={{
-					flexGrow: 1,
-					minHeight: 0,
-					height: '100%',
-				}}
-			>
-				<MessageList active containScrollInSubtree>
-					{events.map((messageGroup, index) => (
-						<MessageGroup key={index} onlyFirstWithMeta>
-							{messageGroup.map(message => (
-								<Message
-									avatarUrl={parseUrl(getAvatarForUser(message.authorId, users))}
-									date={message.parsedDate}
-									isOwn={message.authorId === ownId || message.own === true}
-									key={message.id}
-								>
-									{message.title && <MessageTitle title={message.title} />}
-									{message.text && <MessageText>{message.text}</MessageText>}
-									{message.imageUrl && (
-										<MessageMedia>
-											<img src={message.imageUrl} />
-										</MessageMedia>
-									)}
-									{message.buttons &&
-										message.buttons.length !== 0 && (
-											<MessageButtons>
-												{message.buttons.map((button, buttonIndex) => (
-													<MessageButton
-														key={buttonIndex}
-														label={button.title}
-														onClick={() => {
-															sendMessage(button.postback)
-														}}
-													/>
-												))}
-											</MessageButtons>
-										)}
-								</Message>
-							))}
-						</MessageGroup>
-					))}
-				</MessageList>
-			</div>
-			<TextComposer onSend={onMessageSend}>
-				<Row align="center">
-					<Fill>
-						<TextInput />
-					</Fill>
-					<Fit>
-						<SendButton />
-					</Fit>
-				</Row>
-			</TextComposer>
-			<div
-				style={{
-					textAlign: 'center',
-					fontSize: '.6em',
-					padding: '.4em',
-					background: '#fff',
-					color: '#888',
-				}}
-			>
-				{'Powered by LiveChat'}
-			</div>
-		</div>
-	)
+const themePurpleButton = {
+    ...commonThemeButton,
+    background: 'linear-gradient(to right, #6D5BBA, #8D58BF)',
+    color: '#fff',  
+}
+
+const themeDarkButton = {
+    ...commonThemeButton,
+    background: 'rgba(0, 0, 0, 0.8)',
+    color: '#fff',  
+}
+
+const themeDefaultButton = {
+    ...commonThemeButton,
+    background: '#427fe1',
+    color: '#fff',  
+}
+
+const themeElegantButton = {
+    ...commonThemeButton,
+    background: '#000',
+    color: '#D9A646',  
+}
+
+
+class App extends Component {
+    state = {
+        theme: 'defaultTheme'
+    }
+    
+    handleThemeChange = ({ target }) => {
+        console.log('target.name', target.name)
+        this.setState({
+            theme: target.name + 'Theme'    ,
+        })
+    }
+
+    render() {
+        return (
+            <ThemeProvider theme={themes[this.state.theme]}>
+                <div style={{
+                    padding: '1em',
+                }}>
+                    <h1>
+                        React Chat UI Kit
+                    </h1>
+                    <h2>Sample chat widget</h2>
+                    <p>LiveChat UI Kit is set of React components to easily build nice-looking chat windows. Read <a target="_blank" href="https://docs.livechatinc.com/react-chat-ui-kit/">documentation</a> for more details.</p>
+                    <h3>Change components theme:</h3>
+                    <button id="theme-default" name="default" style={themeDefaultButton} onClick={this.handleThemeChange.bind(this)}>
+                        default
+                    </button>
+                    <button id="theme-purple" name="purple" style={themePurpleButton} onClick={this.handleThemeChange.bind(this)}>
+                        purple
+                    </button>
+                    <button id="theme-dark" name="dark" style={themeDarkButton} onClick={this.handleThemeChange.bind(this)}>
+                        dark
+                    </button>
+                    <button id="theme-elegant" name="elegant" style={themeElegantButton} onClick={this.handleThemeChange.bind(this)}>
+                        elegant
+                    </button>
+                    <FixedWrapper.Root maximizedOnInit>
+                        <FixedWrapper.Maximized>
+                            <Maximized {...this.props} />
+                        </FixedWrapper.Maximized>
+                        <FixedWrapper.Minimized>
+                            <Minimized {...this.props} />
+                        </FixedWrapper.Minimized>
+                    </FixedWrapper.Root>
+                </div>
+			</ThemeProvider>
+        )
+    }
 }
 
 export default App
