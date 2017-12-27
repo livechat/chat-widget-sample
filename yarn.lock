@@ -44,9 +44,9 @@
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@livechat/saga-utils/-/saga-utils-0.0.1.tgz#2762fe522af718f6358e98b88c7b1dc3890c4652"
 
-"@livechat/ui-kit@0.0.2-beta3":
-  version "0.0.2-beta3"
-  resolved "https://registry.yarnpkg.com/@livechat/ui-kit/-/ui-kit-0.0.2-beta3.tgz#d0c4acd9fd8e38dd17756af996b7e48d7e34c117"
+"@livechat/ui-kit@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@livechat/ui-kit/-/ui-kit-0.0.5.tgz#61a51f84b489727fd809a0dfab233efd73ec722b"
   dependencies:
     emotion "^8.0.11"
     emotion-theming "^8.0.11"

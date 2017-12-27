@@ -16,48 +16,11 @@ const root = document.getElementById('root')
 render(
 	<Provider store={store}>
 		<PersistGate persistor={persistor}>
-			<ThemeProvider
-				theme={{
-					colors: {
-						tertiary: 'rgba(0,0,0,.65)',
-					},
-					components: {
-						AgentBar: {
-							css: {
-								borderBottom: 0,
-								color: '#fff',
-								background: 'rgba(0,0,0,.65)',
-							},
-						},
-						Avatar: {
-							css: {},
-						},
-						Message: {
-							secondaryTextColor: '#fff',
-						},
-						OwnMessage: {
-							secondaryTextColor: '#fff',
-						},
-						TitleBar: {
-							css: {
-								background: 'rgba(0,0,0,.65)',
-								borderRadius: '.5em .5em 0 0',
-								fontWeight: 'bold',
-							},
-						},
-						FixedWrapperMaximized: {
-							css: {
-								border: 0,
-								boxShadow: '0 0 2em rgba(0, 0, 0, 0.3)',
-								borderRadius: '.5em',
-								overflow: 'hidden',
-							},
-						},
-					},
-				}}
-			>
+			<ThemeProvider>
 				<FixedWrapper.Root>
-					<FixedWrapper.Maximized>
+					<FixedWrapper.Maximized style={{
+						boxShadow: '0 0 1em rgba(0, 0, 0, 0.2)',
+					}}>
 						<AppContainer />
 					</FixedWrapper.Maximized>
 					<FixedWrapper.Minimized>

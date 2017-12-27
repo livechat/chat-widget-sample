@@ -20,7 +20,7 @@ const botEngineClientToken = process.env.REACT_APP_BOTENGINE_CLIENT_TOKEN
 const sessionId = String(Math.random())
 
 const sendQueryToBotEngine = query =>
-	fetch('http://api.staging.botengine.ai/query', {
+	fetch('https://api.botengine.ai/query', {
 		headers: {
 			authorization: `Bearer ${ botEngineClientToken }`,
 			'Content-Type': 'application/json',
@@ -122,7 +122,6 @@ function* handleSendMessage(sdk, { payload }) {
 function* handleCallbacks(store) {
 	const sdk = init({
 		license: process.env.REACT_APP_LIVECHAT_LICENSE,
-		environment: 'labs',
 	})
 	sdk.on('new_message', data => {
 		store.dispatch(newMessage(data))
