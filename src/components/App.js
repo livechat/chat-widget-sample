@@ -16,6 +16,7 @@ const commonThemeButton = {
     borderRadius: '1em',
     margin: '1em',
     cursor: 'pointer',
+    outline: 'none',
 }
 
 const themePurpleButton = {
