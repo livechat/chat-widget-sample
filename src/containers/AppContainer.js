@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import App from '../components/App'
 import { getEvents } from '../reducers/events'
 import { getUsers, getOwnId, getCurrentAgent } from '../reducers/users'
-import { sendMessage } from '../actions/chatActions'
+import { getRate } from '../reducers/app'
+import { sendMessage, rateGood, rateBad } from '../actions/chatActions'
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -36,6 +37,7 @@ const mapStateToProps = state => {
 		users: getUsers(state),
 		ownId: getOwnId(state),
 		currentAgent: getCurrentAgent(state),
+		rate: getRate(state),
 	}
 }
 
@@ -53,6 +55,12 @@ const mapDispatchToProps = dispatch => ({
 				text,
 			}),
 		),
+	rateGood: () => {
+		dispatch(rateGood())
+	},
+	rateBad: () => {
+		dispatch(rateBad())
+	}
 })
 
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App)

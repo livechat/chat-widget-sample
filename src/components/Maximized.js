@@ -23,6 +23,8 @@ import {
 	EmojiIcon,
 	CloseIcon,
 	Column,
+	RateGoodIcon,
+	RateBadIcon,
 } from '@livechat/ui-kit'
 
 const getAvatarForUser = (userId, users) => {
@@ -44,6 +46,9 @@ const Maximized = ({
 	minimize,
 	maximizeChatWidget,
 	sendMessage,
+	rateGood,
+	rateBad,
+	rate,
 }) => {
 	return (
 		<div
@@ -63,13 +68,27 @@ const Maximized = ({
 			/>
 			{currentAgent && (
 				<AgentBar>
-					<Row>
+					<Row fill>
 						<Column>
 							<Avatar imgUrl={parseUrl(currentAgent.avatarUrl)} />
 						</Column>
 						<Column fill>
 							<Title>{currentAgent.name}</Title>
 							<Subtitle>Support hero</Subtitle>
+						</Column>
+						<Column fit>
+							<Row>
+								<IconButton onClick={ rateGood }>
+									<RateGoodIcon style={{
+										opacity: rate === 'good' ? '1' : '0.5'
+									}} />
+								</IconButton>
+								<IconButton onClick={ rateBad }>
+									<RateBadIcon style={{
+										opacity: rate === 'bad' ? '1' : '0.5'
+									}} />
+								</IconButton>
+							</Row>
 						</Column>
 					</Row>
 				</AgentBar>

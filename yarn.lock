@@ -21,13 +21,13 @@
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@livechat/cookies/-/cookies-0.0.1.tgz#81ad57af1d91bec97fdbdbad83155d91cc6fa348"
 
-"@livechat/livechat-visitor-sdk@0.28.4":
-  version "0.28.4"
-  resolved "https://registry.yarnpkg.com/@livechat/livechat-visitor-sdk/-/livechat-visitor-sdk-0.28.4.tgz#96e5bb8d8509de4a8571a30daa0ca736ae510d66"
+"@livechat/livechat-visitor-sdk@0.29.0-beta1":
+  version "0.29.0-beta1"
+  resolved "https://registry.yarnpkg.com/@livechat/livechat-visitor-sdk/-/livechat-visitor-sdk-0.29.0-beta1.tgz#e64fbc7ba969bbaec7c4f81d26d61a295910e4dc"
   dependencies:
     "@livechat/cookies" "^0.0.1"
     "@livechat/redux-utils" "^0.0.0"
-    "@livechat/saga-utils" "^0.0.1"
+    "@livechat/saga-utils" "^0.1.0"
     lodash "^4.17.4"
     memory-web-storage "^0.1.0"
     mitt "^1.1.2"
@@ -40,20 +40,21 @@
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/@livechat/redux-utils/-/redux-utils-0.0.0.tgz#f3a714a2f978d54bfecb07ad8f7be3c925fbd0de"
 
-"@livechat/saga-utils@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@livechat/saga-utils/-/saga-utils-0.0.1.tgz#2762fe522af718f6358e98b88c7b1dc3890c4652"
+"@livechat/saga-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@livechat/saga-utils/-/saga-utils-0.1.0.tgz#36901e9f071b92b1c15b3a5e371a38467cc25069"
+  dependencies:
+    backo2 "^1.0.2"
 
-"@livechat/ui-kit@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@livechat/ui-kit/-/ui-kit-0.0.5.tgz#61a51f84b489727fd809a0dfab233efd73ec722b"
+"@livechat/ui-kit@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@livechat/ui-kit/-/ui-kit-0.0.7.tgz#7558de8b6f3412cea5b54e9c2fdcd5b5c0d96e66"
   dependencies:
     emotion "^8.0.11"
-    emotion-theming "^8.0.11"
+    emotion-theming "8.0.11"
     polished "^1.9.0"
-    react "^15.5.4"
+    prop-types "^15.5.8"
     react-broadcast "^0.5.2"
-    react-dom "^15.5.4"
     react-emotion "^8.0.11"
     react-textarea-autosize "^5.2.1"
     react-transition-group "^2.2.1"
@@ -1023,6 +1024,10 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.23.0, babel-types@^6.24
 babylon@^6.17.0, babylon@^6.18.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.18.0.tgz#af2f3b88fa6f5c1e4c634d1a0f8eac4f55b395e3"
+
+backo2@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
 
 balanced-match@^0.4.2:
   version "0.4.2"
@@ -2105,9 +2110,9 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
 
-emotion-theming@^8.0.11:
-  version "8.0.12"
-  resolved "https://registry.yarnpkg.com/emotion-theming/-/emotion-theming-8.0.12.tgz#7773fc448d717cc39d6eddb458d31fad39703d00"
+emotion-theming@8.0.11:
+  version "8.0.11"
+  resolved "https://registry.yarnpkg.com/emotion-theming/-/emotion-theming-8.0.11.tgz#8bae15976273a5aed6a0655c48d59f329cb02602"
   dependencies:
     hoist-non-react-statics "^2.3.1"
 

@@ -30,7 +30,7 @@
 		"redux-saga": "^0.15.6",
 		"redux-persist": "^5.4.0",
 		"@livechat/livechat-visitor-sdk": "0.29.0-beta1",
-		"@livechat/ui-kit": "0.0.5"
+		"@livechat/ui-kit": "0.0.7"
   },
   "devDependencies": {
     "react-scripts": "1.0.17"

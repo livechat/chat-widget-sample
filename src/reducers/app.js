@@ -5,6 +5,7 @@ const initialState = {
 	chatState: 'NOT_CHATTING',
 	widgetState: 'MAXIMIZED',
 	chatService: 'botEngine',
+	rate: 'none',
 }
 
 export default createReducer(initialState, {
@@ -27,8 +28,27 @@ export default createReducer(initialState, {
 			chatState: 'ENDED',
 		}
 	},
+	[chatActionTypes.CHAT_RATED](state, { payload }) {
+		return {
+			...state,
+			rate: payload.rate || state.rate,
+		}
+	},
+	[chatActionTypes.RATE_GOOD](state, { payload }) {
+		return {
+			...state,
+			rate: 'good',
+		}
+	},
+	[chatActionTypes.RATE_BAD](state, { payload }) {
+		return {
+			...state,
+			rate: 'bad',
+		}
+	},
 })
 
 export const getChatState = state => state.app.chatState
 export const getWidgetState = state => state.app.widgetState
 export const getChatService = state => state.app.chatService
+export const getRate = state => state.app.rate

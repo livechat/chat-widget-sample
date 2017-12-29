@@ -56,3 +56,18 @@ export const changeChatService = ({ chatService }) => ({
 		chatService,
 	},
 })
+
+export const rateGood = () => ({
+	type: actionTypes.RATE_GOOD,
+})
+
+export const rateBad = () => ({
+	type: actionTypes.RATE_BAD,
+})
+
+export const chatRated = ({ rate }) => ({
+	type: actionTypes.CHAT_RATED,
+	payload: {
+		rate,
+	},
+})

@@ -4,19 +4,51 @@ import Minimized from './Minimized'
 import { ThemeProvider, FixedWrapper, darkTheme, elegantTheme, purpleTheme, defaultTheme } from '@livechat/ui-kit'
 
 const themes = {
-    defaultTheme,
-    purpleTheme,
+    defaultTheme: {
+        FixedWrapperMaximized: {
+            css: {
+                boxShadow: '0 0 1em rgba(0, 0, 0, 0.1)',
+            },
+        },
+    },
+    purpleTheme: {
+        ...purpleTheme,
+        TextComposer: {
+            ...purpleTheme.TextComposer,
+            css: {
+                ...purpleTheme.TextComposer.css,
+                marginTop: '1em',
+            },
+        },
+    },
     elegantTheme,
-    darkTheme,
+    darkTheme: {
+        ...darkTheme,
+        Message: {
+            ...darkTheme.Message,
+            css: {
+                ...darkTheme.Message.css,
+                color: '#fff',
+            },
+        },
+        TitleBar: {
+            ...darkTheme.TitleBar,
+            css: {
+                ...darkTheme.TitleBar.css,
+                padding: '1em',
+            },
+        },
+    },
 }
 
 const commonThemeButton = {
     fontSize: '16px',
     padding: '1em',
-    borderRadius: '1em',
+    borderRadius: '.6em',
     margin: '1em',
     cursor: 'pointer',
     outline: 'none',
+    border: 0,
 }
 
 const themePurpleButton = {
@@ -67,8 +99,9 @@ class App extends Component {
                         Sample chat widget
                     </h1>
                     
-                    <p>Sample chat widget built with <a href="https://docs.livechatinc.com/react-chat-ui-kit/">LiveChat React chat UI kit</a>. In this widget, <a href="https://www.botengine.ai/">BotEngine</a> handles the incoming chats. When the bot returns `LiveChat.transfer` action, the chat is transferred to a human agent together with the transcript of the initial conversation with the bot.</p>
-                    <p>The sample app uses <a href="https://docs.livechatinc.com/visitor-sdk/">Visitor SDK</a> to communicate with LiveChat and <a href="https://docs.botengine.ai/api/introduction">the API</a> to connect with BotEngine.</p>
+                    <p>Sample chat widget built with <a href="https://docs.livechatinc.com/react-chat-ui-kit/" target="_blank">LiveChat React chat UI kit</a>. In this widget, <a href="https://www.botengine.ai/">BotEngine</a> handles the incoming chats. When the bot returns `LiveChat.transfer` action, the chat is transferred to a human agent together with the transcript of the initial conversation with the bot.</p>
+                    <p>The sample app uses <a href="https://docs.livechatinc.com/visitor-sdk/" target="_blank">Visitor SDK</a> to communicate with LiveChat and <a href="https://docs.botengine.ai/api/introduction">the API</a> to connect with BotEngine.</p>
+                    <p>Source code is avaible at <a href="https://github.com/livechat/chat-widget-sample" target="_blank">Github</a>.</p>
                     <h3>Change components theme:</h3>
                     <button id="theme-default" name="default" style={themeDefaultButton} onClick={this.handleThemeChange.bind(this)}>
                         default

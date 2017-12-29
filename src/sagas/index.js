@@ -11,6 +11,7 @@ import {
 	chatStarted,
 	changeChatService,
 	sendMessage,
+	chatRated,
 } from '../actions/chatActions'
 import * as actionTypes from '../constants/chatActionTypes'
 import { getEvents } from '../reducers/events'
@@ -119,6 +120,18 @@ function* handleSendMessage(sdk, { payload }) {
 	}
 }
 
+function* handleRateGood(sdk) {
+	yield call(sdk.rateChat, {
+		rate: 'good',
+	})
+}
+
+function* handleRateBad(sdk) {
+	yield call(sdk.rateChat, {
+		rate: 'bad',
+	})
+}
+
 function* handleCallbacks(store) {
 	const sdk = init({
 		license: process.env.REACT_APP_LIVECHAT_LICENSE,
@@ -133,10 +146,11 @@ function* handleCallbacks(store) {
 		store.dispatch(ownDataReceived(data))
 	})
 	sdk.on('chat_ended', () => {
+		console.log('>chat_ended')
 		store.dispatch(chatEnded())
-		store.dispatch({
-			type: PURGE,
-		})
+		// store.dispatch({
+		// 	type: PURGE,
+		// })
 	})
 	sdk.on('chat_started', data => {
 		store.dispatch(chatStarted(data))
@@ -153,8 +167,15 @@ function* handleCallbacks(store) {
 	sdk.on('connection_status_changed', data => {
 		console.log('> connection_status_changed', data)
 	})
+	sdk.on('chat_rated', data => {
+		store.dispatch(chatRated({
+			rate: data.rate,
+		}))
+	})
 
 	yield takeEvery(actionTypes.SEND_MESSAGE, handleSendMessage, sdk)
+	yield takeEvery(actionTypes.RATE_GOOD, handleRateGood, sdk)
+	yield takeEvery(actionTypes.RATE_BAD, handleRateBad, sdk)
 }
 
 const getPersistSelector = state => state._persist && state._persist.rehydrated
