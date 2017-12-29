@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import App from '../components/App'
 import { getEvents } from '../reducers/events'
 import { getUsers, getOwnId, getCurrentAgent } from '../reducers/users'
-import { getRate } from '../reducers/app'
+import { getRate, getChatState } from '../reducers/app'
 import { sendMessage, rateGood, rateBad } from '../actions/chatActions'
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -38,6 +38,7 @@ const mapStateToProps = state => {
 		ownId: getOwnId(state),
 		currentAgent: getCurrentAgent(state),
 		rate: getRate(state),
+		chatState: getChatState(state),
 	}
 }
 

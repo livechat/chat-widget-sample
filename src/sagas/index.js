@@ -148,9 +148,6 @@ function* handleCallbacks(store) {
 	sdk.on('chat_ended', () => {
 		console.log('>chat_ended')
 		store.dispatch(chatEnded())
-		// store.dispatch({
-		// 	type: PURGE,
-		// })
 	})
 	sdk.on('chat_started', data => {
 		store.dispatch(chatStarted(data))

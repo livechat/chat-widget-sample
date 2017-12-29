@@ -38,6 +38,7 @@ const getAvatarForUser = (userId, users) => {
 const parseUrl = (url) => url && 'https://' + url.replace(/^(http(s)?\:\/\/)/, '').replace(/^\/\//, '')
 
 const Maximized = ({
+	chatState,
 	events,
 	onMessageSend,
 	users,
@@ -77,18 +78,20 @@ const Maximized = ({
 							<Subtitle>Support hero</Subtitle>
 						</Column>
 						<Column fit>
-							<Row>
-								<IconButton onClick={ rateGood }>
-									<RateGoodIcon style={{
-										opacity: rate === 'good' ? '1' : '0.5'
-									}} />
-								</IconButton>
-								<IconButton onClick={ rateBad }>
-									<RateBadIcon style={{
-										opacity: rate === 'bad' ? '1' : '0.5'
-									}} />
-								</IconButton>
-							</Row>
+							{chatState === 'CHATTING' &&
+								<Row>
+									<IconButton onClick={ rateGood }>
+										<RateGoodIcon style={{
+											opacity: rate === 'good' ? '1' : '0.5'
+										}} />
+									</IconButton>
+									<IconButton onClick={ rateBad }>
+										<RateBadIcon style={{
+											opacity: rate === 'bad' ? '1' : '0.5'
+										}} />
+									</IconButton>
+								</Row>
+							}
 						</Column>
 					</Row>
 				</AgentBar>
