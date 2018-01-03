@@ -20,8 +20,22 @@ const themes = {
                 marginTop: '1em',
             },
         },
+        OwnMessage: {
+            ...purpleTheme.OwnMessage,
+            secondaryTextColor: '#fff',
+        },
     },
-    elegantTheme,
+    elegantTheme: {
+        ...elegantTheme,
+        Message: {
+            ...darkTheme.Message,
+            secondaryTextColor: '#fff',
+        },
+        OwnMessage: {
+            ...darkTheme.OwnMessage,
+            secondaryTextColor: '#fff',
+        },
+    },
     darkTheme: {
         ...darkTheme,
         Message: {
@@ -30,6 +44,10 @@ const themes = {
                 ...darkTheme.Message.css,
                 color: '#fff',
             },
+        },
+        OwnMessage: {
+            ...darkTheme.OwnMessage,
+            secondaryTextColor: '#fff',
         },
         TitleBar: {
             ...darkTheme.TitleBar,
