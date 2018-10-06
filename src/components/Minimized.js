@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { IconButton, ChatIcon } from '@livechat/ui-kit'
 
 const Minimized = ({ maximize }) => (

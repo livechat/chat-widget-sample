@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import { Provider } from 'react-redux'
