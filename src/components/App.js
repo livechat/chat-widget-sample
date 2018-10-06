@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import Maximized from './Maximized'
 import Minimized from './Minimized'
 import { ThemeProvider, FixedWrapper, darkTheme, elegantTheme, purpleTheme, defaultTheme } from '@livechat/ui-kit'
@@ -94,7 +94,7 @@ const themeElegantButton = {
 }
 
 
-class App extends Component {
+class App extends React.Component {
     state = {
         theme: 'defaultTheme'
     }
