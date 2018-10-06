@@ -22,15 +22,16 @@
   },
   "homepage": "https://github.com/livechat/chat-widget-sample#readme",
   "dependencies": {
+    "@livechat/livechat-visitor-sdk": "0.35.2",
+    "@livechat/ui-kit": "0.2.13",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.2",
-		"redux-create-reducer": "^1.1.0",
-		"redux": "^3.6.0",
-		"redux-saga": "^0.15.6",
-		"redux-persist": "^5.4.0",
-		"@livechat/livechat-visitor-sdk": "0.29.0-beta1",
-		"@livechat/ui-kit": "0.0.9"
+    "redux": "^3.6.0",
+    "redux-create-reducer": "^1.1.0",
+    "redux-persist": "^5.4.0",
+    "redux-saga": "^0.15.6",
+    "@livechat/saga-utils": "0.1.1"
   },
   "devDependencies": {
     "react-scripts": "1.0.17"

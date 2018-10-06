@@ -25,6 +25,7 @@ import {
 	Column,
 	RateGoodIcon,
 	RateBadIcon,
+	Bubble,
 } from '@livechat/ui-kit'
 
 const getAvatarForUser = (userId, users) => {
@@ -69,15 +70,15 @@ const Maximized = ({
 			/>
 			{currentAgent && (
 				<AgentBar>
-					<Row fill>
+					<Row flexFill>
 						<Column>
 							<Avatar imgUrl={parseUrl(currentAgent.avatarUrl)} />
 						</Column>
-						<Column fill>
+						<Column flexFill>
 							<Title>{currentAgent.name}</Title>
 							<Subtitle>Support hero</Subtitle>
 						</Column>
-						<Column fit>
+						<Column flexFit>
 							{chatState === 'CHATTING' &&
 								<Row>
 									<IconButton onClick={ rateGood }>
@@ -113,27 +114,29 @@ const Maximized = ({
 									isOwn={message.authorId === ownId || message.own === true}
 									key={message.id}
 								>
-									{message.title && <MessageTitle title={message.title} />}
-									{message.text && <MessageText>{message.text}</MessageText>}
-									{message.imageUrl && (
-										<MessageMedia>
-											<img src={message.imageUrl} />
-										</MessageMedia>
-									)}
-									{message.buttons &&
-										message.buttons.length !== 0 && (
-											<MessageButtons>
-												{message.buttons.map((button, buttonIndex) => (
-													<MessageButton
-														key={buttonIndex}
-														label={button.title}
-														onClick={() => {
-															sendMessage(button.postback)
-														}}
-													/>
-												))}
-											</MessageButtons>
+									<Bubble isOwn={message.authorId === ownId || message.own === true}>
+										{message.title && <MessageTitle title={message.title} />}
+										{message.text && <MessageText>{message.text}</MessageText>}
+										{message.imageUrl && (
+											<MessageMedia>
+												<img src={message.imageUrl} />
+											</MessageMedia>
 										)}
+										{message.buttons &&
+											message.buttons.length !== 0 && (
+												<MessageButtons>
+													{message.buttons.map((button, buttonIndex) => (
+														<MessageButton
+															key={buttonIndex}
+															label={button.title}
+															onClick={() => {
+																sendMessage(button.postback)
+															}}
+														/>
+													))}
+												</MessageButtons>
+										)}
+									</Bubble>
 								</Message>
 							))}
 						</MessageGroup>
